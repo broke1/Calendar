@@ -68,7 +68,7 @@ module.exports = {
         {
           loader: 'file-loader',
           options: {
-            name: '/fonts/[name].[ext]'
+            name: 'fonts/[name].[ext]'
           }
         }
       ]
@@ -78,7 +78,7 @@ module.exports = {
         {
           loader: 'file-loader',
           options: {
-            name: '/images/[name].[ext]'
+            name: 'images/[name].[ext]'
           }
         }
       ]
@@ -100,7 +100,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       hash: true,
       template: './src/index.html', 
-      filename: './index.html'
+      filename: './index.html',
+      favicon: "./src/assets/images/main_icon.png"
     }),
     new MiniCssExtractPlugin({
       filename: 'css/[name].css',
