@@ -2,6 +2,8 @@ const path = require('path')
 const { VueLoaderPlugin } = require('vue-loader')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const WebpackPwaManifest = require('webpack-pwa-manifest')
+const WorkboxWebpackPlugin = require("workbox-webpack-plugin");
 
 module.exports = {
 
@@ -98,10 +100,33 @@ module.exports = {
   plugins: [
     new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
-      hash: true,
+      hash: false,
       template: './src/index.html', 
       filename: './index.html',
       favicon: "./src/assets/images/main_icon.png"
+    }),
+    new WebpackPwaManifest({
+      name: 'Calendar',
+      short_name: 'Calendar',
+      description: 'Simple calendar',
+      background_color: '#1E90FF',
+      theme_color: "#1E90FF",
+      crossorigin: 'use-credentials', //can be null, use-credentials or anonymous
+      icons: [
+        {
+          src: path.resolve('src/assets/images/main_icon.png'),
+          size: '192x192'  
+        },
+        {
+          src: path.resolve('src/assets/images/maskable-icon.png'),
+          size: '192x192',
+          purpose: 'maskable'
+        }
+      ]
+    }),
+    new WorkboxWebpackPlugin.InjectManifest({
+      swSrc: "./src/sw.js",
+      swDest: "sw.js",
     }),
     new MiniCssExtractPlugin({
       filename: 'css/[name].css',
