@@ -14,7 +14,8 @@ export default Vue.extend({
       //   'bob': 'боб',
       // },
       day: 16,
-      month: 'июня'
+      month: 'июня',
+      list: ['','','','','','','','']
     } 
   },
   methods: {

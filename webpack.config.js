@@ -100,7 +100,7 @@ module.exports = {
   plugins: [
     new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
-      hash: false,
+      hash: true,
       template: './src/index.html', 
       filename: './index.html',
       favicon: "./src/assets/images/main_icon.png"

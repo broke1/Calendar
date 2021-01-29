@@ -11,6 +11,26 @@
             {{ month }}
           </div>
         </div>
+        <div class="cart-body">
+          <div class="cart-box">
+            <div class="cart-list">
+              <div 
+                v-for="(item,index) in list"
+                :key="index"
+                class="cart-line" 
+              >
+                <input 
+                  v-model="list[index]"
+                  type="text" 
+                  class="line-input"
+                >
+                <div class="line-btn">
+                  V
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- <div class="page-block">
