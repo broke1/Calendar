@@ -3,18 +3,33 @@ $black: #151719
 $blue: #1E90FF
 $white: #fff
 
-
 .container
   font-size: 18px
   width: 1040px
   margin: 0 auto
   position: relative
-  transition: all 0.3s ease
   height: 98vh
   display: flex
   flex-flow: column
   justify-content: center
   align-items: center
+  z-index: 2
+
+  .main-shade
+    position: fixed
+    z-index: -1
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    background: $black
+    opacity: 0
+    cursor: pointer
+    transition: all 0.3s ease
+
+  .main-shade-modal
+    z-index: 1
+    opacity: 0.9
 
   .calendar-slider
     display: flex
@@ -29,6 +44,20 @@ $white: #fff
       border-radius: 4px
       border: 1px solid $lightgrey
       box-shadow: 0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12)
+      position: relative
+      z-index: 3
+      background: $white
+      transition: all 0.3s ease
+
+      .cart-shade
+        z-index: 4
+        position: absolute
+        width: 100%
+        height: 100%
+        top: 0
+        left: 0
+        background: transparent
+        cursor: pointer
 
       .cart-header
         display: flex
@@ -58,6 +87,7 @@ $white: #fff
           height: 350px
           position: relative
           overflow: hidden
+          transition: all 0.3s ease
 
           &::before
             content: ''
@@ -82,11 +112,13 @@ $white: #fff
             flex-flow: column nowrap
             justify-content: flex-start
             align-items: center
-            overflow: auto
+            overflow: hidden
             height: 350px
+            transition: all 0.3s ease
 
             .cart-line
               width: 100%
+              min-height: 70px
               height: 70px
               outline: 1px solid rgba(30, 144, 255,0.7)
               outline-offset: -1px
@@ -96,10 +128,11 @@ $white: #fff
               align-items: center
 
               .line-input
-                height: 70px
+                height: 100%
                 width: 100%
                 font-size: 2.5rem
                 border: none
+                padding: 0 20px
 
                 &:focus
                   border: none
@@ -115,42 +148,36 @@ $white: #fff
                 background: $blue
                 outline: 1px solid $white
                 outline-offset: 0px
+                cursor: pointer
+
+    .cart-block-modal
+      width: 80%
+
+      .cart-shade
+        z-index: -1
+
+      .cart-body
+
+        .cart-box
+          height: 60vh
+
+          .cart-list
+            overflow: auto
+            height: 60vh
+
+            .cart-line
+              height: 100px
+              min-height: 100px
+
+              .line-btn
+                padding: 35px
 
 
 
 
+            
 
 
-
-    // .page-block
-    //     color: black
-    //     width: 400px
-    //     height: 500px
-    //     border: 1px solid
-    //     border-radius: 5px
-    //     padding: 20px
-    //     margin: 100px auto
-    //     position: relative
-
-    //     .page
-    //         font-size: 18px
-
-    //     .clue
-    //         position: absolute
-    //         background: #6495ED
-    //         border: 1px solid #6495ED
-    //         border-radius: 5px 
-    //         padding: 5px
-    //         color: white
-    //         transition: 0.4s ease all
-    //         opacity: 0
-    //         visibility: hidden
-    //         font-size: 16px
-    //         cursor: pointer
-
-    //     .clue-show
-    //         opacity: 1
-    //         visibility: visible
 
 
         

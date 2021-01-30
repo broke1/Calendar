@@ -15,10 +15,17 @@ export default Vue.extend({
       // },
       day: 16,
       month: 'июня',
-      list: ['','','','','','','','']
+      list: ['','','','','','','',''],
+      modalShow: false,
     } 
   },
   methods: {
+    openCartBlock: function() {
+      this.modalShow = true
+    },
+    closeCartBlock: function() {
+      this.modalShow = false
+    },
     // prepareText: function() {
     //   let originText = this.$refs.page.innerText
     //   let reg = new RegExp( /(\S*)/, "g")

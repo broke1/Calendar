@@ -2,7 +2,14 @@
 <template>
   <div class="container">
     <div class="calendar-slider">
-      <div class="cart-block">
+      <div 
+        class="cart-block" 
+        :class="{ 'cart-block-modal': modalShow}"
+      >
+        <div 
+          class="cart-shade" 
+          @click="openCartBlock()"
+        />
         <div class="cart-header">
           <div class="cart-day">
             {{ day }}
@@ -17,7 +24,7 @@
               <div 
                 v-for="(item,index) in list"
                 :key="index"
-                class="cart-line" 
+                class="cart-line"
               >
                 <input 
                   v-model="list[index]"
@@ -33,20 +40,11 @@
         </div>
       </div>
     </div>
-    <!-- <div class="page-block">
-      <div 
-        ref="page"
-        class="page"  
-        @click="getElement($event)"
-      >
-        Hello Kitty. How are you? And hello Bob!
-      </div>
-      <div 
-        ref="clue"
-        class="clue"  
-        @click="hideClue()"
-      />
-    </div> -->
+    <div 
+      class="main-shade"
+      :class="{ 'main-shade-modal' : modalShow }"
+      @click="closeCartBlock()"
+    />
   </div>
 </template>
 
