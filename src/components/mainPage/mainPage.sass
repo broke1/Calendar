@@ -31,6 +31,7 @@ $white: #fff
     z-index: 1
     opacity: 0.9
 
+
   .calendar-slider
     display: flex
     flex-flow: row nowrap
@@ -38,16 +39,22 @@ $white: #fff
     align-items: center
     width: 100%
 
+    .carousel-block
+      transition: all 0.3s ease 0.2s
+
     .cart-block
       width: 50%
-      height: auto
+      height: auto !important
       border-radius: 4px
       border: 1px solid $lightgrey
       box-shadow: 0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12)
-      position: relative
+      //position: relative
+      transform: rotateY('0deg')
       z-index: 3
       background: $white
-      transition: all 0.3s ease
+      transition: all 0.3s ease !important
+      top: 0
+      left: 0
 
       .cart-shade
         z-index: 4
@@ -122,6 +129,7 @@ $white: #fff
               height: 70px
               outline: 1px solid rgba(30, 144, 255,0.7)
               outline-offset: -1px
+              border-bottom: 1px solid $white
               display: flex
               flex-flow: row nowrap
               justify-content: flex-start
@@ -150,27 +158,35 @@ $white: #fff
                 outline-offset: 0px
                 cursor: pointer
 
-    .cart-block-modal
-      width: 80%
+    // .carousel-block-modal
+    //   overflow: visible
+    //   z-index: 3
+    //   transition: all 0.3s ease 
 
-      .cart-shade
-        z-index: -1
+    //   .current
+    //     width: 80vw !important
+    //     top: 50%
+    //     left: 50%
+    //     transform: translate(-50%, -50%) !important
 
-      .cart-body
+    //     .cart-shade
+    //       z-index: -1
 
-        .cart-box
-          height: 60vh
+    //     .cart-body
 
-          .cart-list
-            overflow: auto
-            height: 60vh
+    //       .cart-box
+    //         height: 60vh
 
-            .cart-line
-              height: 100px
-              min-height: 100px
+    //         .cart-list
+    //           overflow: auto
+    //           height: 60vh
 
-              .line-btn
-                padding: 35px
+    //           .cart-line
+    //             height: 100px
+    //             min-height: 100px
+
+    //             .line-btn
+    //               padding: 35px
 
 
 

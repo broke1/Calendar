@@ -1,25 +1,62 @@
 //import { TestScheduler } from "jest"
 import Vue from 'vue'
 
+
+import { Carousel3d, Slide } from 'vue-carousel-3d';
+
 export default Vue.extend({
+  components: { Carousel3d, Slide },
   data () {
     return {
-      // dict: {
-      //   'hello': 'привет',
-      //   'kitty': 'китти',
-      //   'how': 'как',
-      //   'are': 'глагол to be',
-      //   'you': 'ты',
-      //   'and': 'и',
-      //   'bob': 'боб',
-      // },
-      day: 16,
-      month: 'июня',
-      list: ['','','','','','','',''],
+      listCarousel: [
+        {
+          day: '16',
+          month: 'июня',
+          list: ['','','','','','','','']
+        },
+        {
+          day: '17',
+          month: 'июня',
+          list: ['','','','','','','','']
+        },
+        {
+          day: '18',
+          month: 'июня',
+          list: ['','','','','','','','']
+        },
+        {
+          day: '19',
+          month: 'июня',
+          list: ['','','','','','','','']
+        },
+        {
+          day: '20',
+          month: 'июня',
+          list: ['','','','','','','','']
+        },
+      ],
       modalShow: false,
+      settingsCarousel: {
+        dots: true,
+        infinite: true,
+        initialSlide: 1,
+        speed: 500,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        swipeToSlide: true
+      },
+      coord: 0,
     } 
   },
   methods: {
+    downCartBlock: function(e) {
+      this.coord = e.layerX
+    },
+    upCartBlock: function(e) {
+      if (Math.abs(this.coord - e.layerX) < 10) {
+        this.openCartBlock()
+      }
+    },
     openCartBlock: function() {
       this.modalShow = true
     },
