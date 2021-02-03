@@ -12,27 +12,32 @@ export default Vue.extend({
         {
           day: '16',
           month: 'июня',
-          list: ['','','','','','','','']
+          list: ['','','','','','','',''],
+          btn: [false,false,false,false,false,false,false,false],
         },
         {
           day: '17',
           month: 'июня',
-          list: ['','','','','','','','']
+          list: ['','','','','','','',''],
+          btn: [false,false,false,false,false,false,false,false],
         },
         {
           day: '18',
           month: 'июня',
-          list: ['','','','','','','','']
+          list: ['','','','','','','',''],
+          btn: [false,false,false,false,false,false,false,false],
         },
         {
           day: '19',
           month: 'июня',
-          list: ['','','','','','','','']
+          list: ['','','','','','','',''],
+          btn: [false,false,false,false,false,false,false,false],
         },
         {
           day: '20',
           month: 'июня',
-          list: ['','','','','','','','']
+          list: ['','','','','','','',''],
+          btn: [false,false,false,false,false,false,false,false],
         },
       ],
       modalShow: false,
@@ -63,6 +68,9 @@ export default Vue.extend({
     closeCartBlock: function() {
       this.modalShow = false
     },
+    checkTask: function(id, index) {
+      this.listCarousel[id].btn[index] = !this.listCarousel[id].btn[index]
+    }
     // prepareText: function() {
     //   let originText = this.$refs.page.innerText
     //   let reg = new RegExp( /(\S*)/, "g")
