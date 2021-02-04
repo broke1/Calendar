@@ -2,45 +2,44 @@
 import Vue from 'vue'
 
 
-import { Carousel3d, Slide } from 'vue-carousel-3d';
+import { Carousel3d, Slide } from 'vue-carousel-3d'
 
 export default Vue.extend({
   components: { Carousel3d, Slide },
   data () {
     return {
-      listCarousel: [
-        {
-          day: '16',
-          month: 'июня',
-          list: ['','','','','','','',''],
-          btn: [false,false,false,false,false,false,false,false],
-        },
-        {
-          day: '17',
-          month: 'июня',
-          list: ['','','','','','','',''],
-          btn: [false,false,false,false,false,false,false,false],
-        },
-        {
-          day: '18',
-          month: 'июня',
-          list: ['','','','','','','',''],
-          btn: [false,false,false,false,false,false,false,false],
-        },
-        {
-          day: '19',
-          month: 'июня',
-          list: ['','','','','','','',''],
-          btn: [false,false,false,false,false,false,false,false],
-        },
-        {
-          day: '20',
-          month: 'июня',
-          list: ['','','','','','','',''],
-          btn: [false,false,false,false,false,false,false,false],
-        },
-      ],
-      modalShow: false,
+      // listCarousel: [
+      //   {
+      //     day: '16',
+      //     month: 'июня',
+      //     list: ['','','','','','','',''],
+      //     btn: [false,false,false,false,false,false,false,false],
+      //   },
+      //   {
+      //     day: '17',
+      //     month: 'июня',
+      //     list: ['','','','','','','',''],
+      //     btn: [false,false,false,false,false,false,false,false],
+      //   },
+      //   {
+      //     day: '18',
+      //     month: 'июня',
+      //     list: ['','','','','','','',''],
+      //     btn: [false,false,false,false,false,false,false,false],
+      //   },
+      //   {
+      //     day: '19',
+      //     month: 'июня',
+      //     list: ['','','','','','','',''],
+      //     btn: [false,false,false,false,false,false,false,false],
+      //   },
+      //   {
+      //     day: '20',
+      //     month: 'июня',
+      //     list: ['','','','','','','',''],
+      //     btn: [false,false,false,false,false,false,false,false],
+      //   },
+      // ],
       settingsCarousel: {
         dots: true,
         infinite: true,
@@ -51,26 +50,28 @@ export default Vue.extend({
         swipeToSlide: true
       },
       coord: 0,
+      modalId: 0,
     } 
   },
+  computed: {
+    listCarousel: function() { 
+      return this.$store.getters.getListCarousel
+    }
+  },
   methods: {
-    downCartBlock: function(e) {
+    downCartBlock: function(e,id) {
       this.coord = e.layerX
+      this.modalId = id
     },
     upCartBlock: function(e) {
-      if (Math.abs(this.coord - e.layerX) < 10) {
-        this.openCartBlock()
+      if (Math.abs(this.coord - e.layerX) < 10) { 
+        this.openCartBlock(this.modalId)
       }
     },
-    openCartBlock: function() {
-      this.modalShow = true
+    openCartBlock: function(id) {
+      this.$store.commit('openCloseModal',{id: id, status: true})
     },
-    closeCartBlock: function() {
-      this.modalShow = false
-    },
-    checkTask: function(id, index) {
-      this.listCarousel[id].btn[index] = !this.listCarousel[id].btn[index]
-    }
+  
     // prepareText: function() {
     //   let originText = this.$refs.page.innerText
     //   let reg = new RegExp( /(\S*)/, "g")

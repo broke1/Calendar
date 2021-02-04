@@ -24,8 +24,9 @@ import store from './store/index.js' // подключаем файл с нат�
 import regeneratorRuntime from "regenerator-runtime"; // Для работы с асинхронными  функциями
 
 
-Vue.component('main-page', require('./components/mainPage/mainPage.vue').default)
+Vue.component('main-page', require('./components/mainPage/mainPage.vue').default)  // главная страница
 
+Vue.component('modal', require('./components/modal/modal.vue').default)  // модальное окно
 
 
 
